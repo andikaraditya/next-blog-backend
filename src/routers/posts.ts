@@ -87,17 +87,14 @@ posts.post("/posts", async (req, res) => {
 posts.patch("/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content } = req.body;
+    const body = req.body;
 
-    if (!title && !content) {
-      throw { code: 400, message: "all form must be filled" };
-    }
     const post = await database
       .update(
         "posts",
         {
-          title,
-          content
+          ...body,
+          updated_at: new Date()
         },
         {
           id: Number(id)
