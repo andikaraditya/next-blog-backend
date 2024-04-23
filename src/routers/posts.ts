@@ -5,13 +5,44 @@ import getPool from "../database/pool";
 const posts = express.Router();
 
 posts.get("/posts", async (req, res) => {
-  const posts = await database.select("posts", {}).run(getPool(process.env.DATABASE_URL!))
+  const {page=1} = req.query 
+  const posts = await database.select("posts", {}, {
+    offset: Number((Number(page)-1) * 5),
+    limit: 5,
+    order: {
+      by: "created_at",
+      direction: "DESC"
+    }
+  }).run(getPool(process.env.DATABASE_URL!))
   res.status(200).json({
     status: "success",
-    message: "succes get posts",
+    message: "success get posts",
     data: posts
   })
 });
+
+posts.get("/posts/:id", async (req, res) => {
+  try {
+    const {id} = req.params
+
+    const post = await database.selectOne("posts", {
+      id: Number(id)
+    }).run(getPool(process.env.DATABASE_URL!))
+    if (!post) {
+      throw {code: 404, message: "post not found"}
+    }
+    res.status(200).json({
+      status: "success",
+      message: "success get post by id",
+      data: post
+    })
+  } catch (error) {
+    res.status(error.code).json({
+      status: "error",
+      message: error.message
+    })
+  }
+})
 
 posts.post("/posts", async (req, res) => {
   try {
