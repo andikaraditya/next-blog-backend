@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./build",
+    "strictNullChecks": true,
+    "typeRoots": ["./typings", "./node_modules/@types"],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["node", "express"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": false,
+    "strict": false,
+    "noImplicitAny": false,
+    "rootDir": "src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["build", "node_modules", "test"]
+}
