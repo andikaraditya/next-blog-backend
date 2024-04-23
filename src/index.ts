@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import posts from "./routers/posts";
 import dotenv from "dotenv";
-import Connection from "./database/pool";
+import users from "./routers/users";
 const app = express();
 const port = 3000;
 
@@ -13,6 +13,7 @@ const port = 3000;
   app.get("/", (req, res) => {
     res.send("Hello World!");
   });
+  app.use(users)
   app.use(posts);
 
   app.listen(port, () => {

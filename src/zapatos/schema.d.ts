@@ -248,23 +248,166 @@ declare module 'zapatos/schema' {
     export type SQL = SQLExpression | SQLExpression[];
   }
 
+  /**
+   * **users**
+   * - Table in database
+   */
+  export namespace users {
+    export type Table = 'users';
+    export interface Selectable {
+      /**
+      * **users.email**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      email: string | null;
+      /**
+      * **users.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      */
+      id: number;
+      /**
+      * **users.name**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      name: string | null;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      password: string | null;
+    }
+    export interface JSONSelectable {
+      /**
+      * **users.email**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      email: string | null;
+      /**
+      * **users.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      */
+      id: number;
+      /**
+      * **users.name**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      name: string | null;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      password: string | null;
+    }
+    export interface Whereable {
+      /**
+      * **users.email**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      email?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      */
+      id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.name**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      name?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      password?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+    }
+    export interface Insertable {
+      /**
+      * **users.email**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      email?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      */
+      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.name**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      name?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      password?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+    }
+    export interface Updatable {
+      /**
+      * **users.email**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      email?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.id**
+      * - `int4` in database
+      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      */
+      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.name**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      name?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **users.password**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      password?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+    }
+    export type UniqueIndex = 'users_email_key' | 'users_pkey';
+    export type Column = keyof Selectable;
+    export type OnlyCols<T extends readonly Column[]> = Pick<Selectable, T[number]>;
+    export type SQLExpression = Table | db.ColumnNames<Updatable | (keyof Updatable)[]> | db.ColumnValues<Updatable> | Whereable | Column | db.ParentColumn | db.GenericSQLExpression;
+    export type SQL = SQLExpression | SQLExpression[];
+  }
+
   /* --- aggregate types --- */
 
   export namespace public {  
-    export type Table = posts.Table | schema_migrations.Table;
-    export type Selectable = posts.Selectable | schema_migrations.Selectable;
-    export type JSONSelectable = posts.JSONSelectable | schema_migrations.JSONSelectable;
-    export type Whereable = posts.Whereable | schema_migrations.Whereable;
-    export type Insertable = posts.Insertable | schema_migrations.Insertable;
-    export type Updatable = posts.Updatable | schema_migrations.Updatable;
-    export type UniqueIndex = posts.UniqueIndex | schema_migrations.UniqueIndex;
-    export type Column = posts.Column | schema_migrations.Column;
+    export type Table = posts.Table | schema_migrations.Table | users.Table;
+    export type Selectable = posts.Selectable | schema_migrations.Selectable | users.Selectable;
+    export type JSONSelectable = posts.JSONSelectable | schema_migrations.JSONSelectable | users.JSONSelectable;
+    export type Whereable = posts.Whereable | schema_migrations.Whereable | users.Whereable;
+    export type Insertable = posts.Insertable | schema_migrations.Insertable | users.Insertable;
+    export type Updatable = posts.Updatable | schema_migrations.Updatable | users.Updatable;
+    export type UniqueIndex = posts.UniqueIndex | schema_migrations.UniqueIndex | users.UniqueIndex;
+    export type Column = posts.Column | schema_migrations.Column | users.Column;
   
-    export type AllBaseTables = [posts.Table, schema_migrations.Table];
+    export type AllBaseTables = [posts.Table, schema_migrations.Table, users.Table];
     export type AllForeignTables = [];
     export type AllViews = [];
     export type AllMaterializedViews = [];
-    export type AllTablesAndViews = [posts.Table, schema_migrations.Table];
+    export type AllTablesAndViews = [posts.Table, schema_migrations.Table, users.Table];
   }
 
 
@@ -294,41 +437,49 @@ declare module 'zapatos/schema' {
   export type SelectableForTable<T extends Table> = {
     "posts": posts.Selectable;
     "schema_migrations": schema_migrations.Selectable;
+    "users": users.Selectable;
   }[T];
 
   export type JSONSelectableForTable<T extends Table> = {
     "posts": posts.JSONSelectable;
     "schema_migrations": schema_migrations.JSONSelectable;
+    "users": users.JSONSelectable;
   }[T];
 
   export type WhereableForTable<T extends Table> = {
     "posts": posts.Whereable;
     "schema_migrations": schema_migrations.Whereable;
+    "users": users.Whereable;
   }[T];
 
   export type InsertableForTable<T extends Table> = {
     "posts": posts.Insertable;
     "schema_migrations": schema_migrations.Insertable;
+    "users": users.Insertable;
   }[T];
 
   export type UpdatableForTable<T extends Table> = {
     "posts": posts.Updatable;
     "schema_migrations": schema_migrations.Updatable;
+    "users": users.Updatable;
   }[T];
 
   export type UniqueIndexForTable<T extends Table> = {
     "posts": posts.UniqueIndex;
     "schema_migrations": schema_migrations.UniqueIndex;
+    "users": users.UniqueIndex;
   }[T];
 
   export type ColumnForTable<T extends Table> = {
     "posts": posts.Column;
     "schema_migrations": schema_migrations.Column;
+    "users": users.Column;
   }[T];
 
   export type SQLForTable<T extends Table> = {
     "posts": posts.SQL;
     "schema_migrations": schema_migrations.SQL;
+    "users": users.SQL;
   }[T];
 
 }
