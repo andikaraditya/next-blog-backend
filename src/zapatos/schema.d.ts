@@ -48,6 +48,12 @@ declare module 'zapatos/schema' {
       */
       id: number;
       /**
+      * **posts.status**
+      * - `varchar` in database
+      * - Nullable, default: `'published'::character varying`
+      */
+      status: string | null;
+      /**
       * **posts.title**
       * - `varchar` in database
       * - `NOT NULL`, no default
@@ -79,6 +85,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
       */
       id: number;
+      /**
+      * **posts.status**
+      * - `varchar` in database
+      * - Nullable, default: `'published'::character varying`
+      */
+      status: string | null;
       /**
       * **posts.title**
       * - `varchar` in database
@@ -112,6 +124,12 @@ declare module 'zapatos/schema' {
       */
       id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
+      * **posts.status**
+      * - `varchar` in database
+      * - Nullable, default: `'published'::character varying`
+      */
+      status?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
       * **posts.title**
       * - `varchar` in database
       * - `NOT NULL`, no default
@@ -144,6 +162,12 @@ declare module 'zapatos/schema' {
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
+      * **posts.status**
+      * - `varchar` in database
+      * - Nullable, default: `'published'::character varying`
+      */
+      status?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
       * **posts.title**
       * - `varchar` in database
       * - `NOT NULL`, no default
@@ -175,6 +199,12 @@ declare module 'zapatos/schema' {
       * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      /**
+      * **posts.status**
+      * - `varchar` in database
+      * - Nullable, default: `'published'::character varying`
+      */
+      status?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
       /**
       * **posts.title**
       * - `varchar` in database

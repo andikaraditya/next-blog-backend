@@ -10,7 +10,9 @@ posts.get("/posts", async (req, res) => {
   const posts = await database
     .select(
       "posts",
-      {},
+      {
+        status: "published"
+      },
       {
         offset: Number((Number(page) - 1) * 5),
         limit: 5,
@@ -57,7 +59,7 @@ posts.use(authentication);
 
 posts.post("/posts", async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, status = "draft" } = req.body;
 
     if (!title || !content) {
       throw { code: 400, message: "all form must be filled" };
@@ -66,6 +68,7 @@ posts.post("/posts", async (req, res) => {
       .insert("posts", {
         title,
         content,
+        status,
         created_at: new Date(),
         updated_at: new Date()
       })
@@ -113,6 +116,20 @@ posts.patch("/posts/:id", async (req, res) => {
       message: error.message
     });
   }
+});
+
+posts.get("/drafts", async (req, res) => {
+  const posts = await database
+    .select("posts", {
+      status: "draft"
+    })
+    .run(getPool(process.env.DATABASE_URL!));
+
+  res.status(200).json({
+    status: "success",
+    message: "success get posts",
+    data: posts
+  });
 });
 
 export default posts;
