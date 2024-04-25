@@ -1,10 +1,8 @@
 import { Pool } from "pg";
 
-export default function getPool(connectionString: string) {
-  return new Pool({
-    connectionString: connectionString,
-    max: 100,
-    idleTimeoutMillis: 10000,
-    connectionTimeoutMillis: 2000
-  });
-}
+export const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  max: 100,
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 2000
+});

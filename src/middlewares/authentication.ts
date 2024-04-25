@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { database } from "../zapatos";
-import getPool from "../database/pool";
+import { pool } from "../database/pool";
 
 export default async function authentication(
   req: Request,
@@ -21,7 +21,7 @@ export default async function authentication(
       .selectOne("users", {
         id: decoded.userId!
       })
-      .run(getPool(process.env.DATABASE_URL!));
+      .run(pool);
     if (!user) {
       throw { code: 401, message: "authentication failed" };
     }

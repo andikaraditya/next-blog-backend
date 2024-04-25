@@ -1,13 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import posts from "./routers/posts";
-import dotenv from "dotenv";
 import users from "./routers/users";
 const app = express();
 const port = 3000;
 
 (async function () {
-  dotenv.config();
   app.use(cors());
   app.use(express.json());
   app.get("/", (req, res) => {
