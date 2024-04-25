@@ -43,14 +43,14 @@ declare module 'zapatos/schema' {
       created_at: Date | null;
       /**
       * **posts.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id: number;
+      id: string;
       /**
       * **posts.status**
       * - `varchar` in database
-      * - Nullable, default: `'published'::character varying`
+      * - Nullable, default: `'draft'::character varying`
       */
       status: string | null;
       /**
@@ -81,14 +81,14 @@ declare module 'zapatos/schema' {
       created_at: db.TimestampString | null;
       /**
       * **posts.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id: number;
+      id: string;
       /**
       * **posts.status**
       * - `varchar` in database
-      * - Nullable, default: `'published'::character varying`
+      * - Nullable, default: `'draft'::character varying`
       */
       status: string | null;
       /**
@@ -119,14 +119,14 @@ declare module 'zapatos/schema' {
       created_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
       /**
       * **posts.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      id?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
       * **posts.status**
       * - `varchar` in database
-      * - Nullable, default: `'published'::character varying`
+      * - Nullable, default: `'draft'::character varying`
       */
       status?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
@@ -157,14 +157,14 @@ declare module 'zapatos/schema' {
       created_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment;
       /**
       * **posts.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
+      id?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
       /**
       * **posts.status**
       * - `varchar` in database
-      * - Nullable, default: `'published'::character varying`
+      * - Nullable, default: `'draft'::character varying`
       */
       status?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
       /**
@@ -195,14 +195,14 @@ declare module 'zapatos/schema' {
       created_at?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment>;
       /**
       * **posts.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('posts_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      id?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
       /**
       * **posts.status**
       * - `varchar` in database
-      * - Nullable, default: `'published'::character varying`
+      * - Nullable, default: `'draft'::character varying`
       */
       status?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
       /**
@@ -288,15 +288,15 @@ declare module 'zapatos/schema' {
       /**
       * **users.email**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      email: string | null;
+      email: string;
       /**
       * **users.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id: number;
+      id: string;
       /**
       * **users.name**
       * - `varchar` in database
@@ -306,23 +306,23 @@ declare module 'zapatos/schema' {
       /**
       * **users.password**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      password: string | null;
+      password: string;
     }
     export interface JSONSelectable {
       /**
       * **users.email**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      email: string | null;
+      email: string;
       /**
       * **users.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id: number;
+      id: string;
       /**
       * **users.name**
       * - `varchar` in database
@@ -332,23 +332,23 @@ declare module 'zapatos/schema' {
       /**
       * **users.password**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      password: string | null;
+      password: string;
     }
     export interface Whereable {
       /**
       * **users.email**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
       email?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
       * **users.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      id?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
       * **users.name**
       * - `varchar` in database
@@ -358,7 +358,7 @@ declare module 'zapatos/schema' {
       /**
       * **users.password**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
       password?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
     }
@@ -366,15 +366,15 @@ declare module 'zapatos/schema' {
       /**
       * **users.email**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      email?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      email: string | db.Parameter<string> | db.SQLFragment;
       /**
       * **users.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
+      id?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment;
       /**
       * **users.name**
       * - `varchar` in database
@@ -384,23 +384,23 @@ declare module 'zapatos/schema' {
       /**
       * **users.password**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      password?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      password: string | db.Parameter<string> | db.SQLFragment;
     }
     export interface Updatable {
       /**
       * **users.email**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      email?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      email?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
       /**
       * **users.id**
-      * - `int4` in database
-      * - `NOT NULL`, default: `nextval('users_id_seq'::regclass)`
+      * - `uuid` in database
+      * - `NOT NULL`, default: `uuid_generate_v4()`
       */
-      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
+      id?: string | db.Parameter<string> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.DefaultType | db.SQLFragment>;
       /**
       * **users.name**
       * - `varchar` in database
@@ -410,9 +410,9 @@ declare module 'zapatos/schema' {
       /**
       * **users.password**
       * - `varchar` in database
-      * - Nullable, no default
+      * - `NOT NULL`, no default
       */
-      password?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      password?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
     }
     export type UniqueIndex = 'users_email_key' | 'users_pkey';
     export type Column = keyof Selectable;

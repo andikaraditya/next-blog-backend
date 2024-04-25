@@ -43,7 +43,7 @@ posts.get("/posts/:id", async (req, res) => {
     const { id } = req.params;
     const post = await database
       .selectOne("posts", {
-        id: Number(id)
+        id: id
       })
       .run(pool);
     if (!post) {
@@ -110,7 +110,7 @@ posts.patch("/posts/:id", async (req, res) => {
           updated_at: new Date()
         },
         {
-          id: Number(id)
+          id: id
         }
       )
       .run(pool);

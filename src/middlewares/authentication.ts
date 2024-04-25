@@ -13,7 +13,7 @@ export default async function authentication(
     if (!authorization) {
       throw { code: 401, message: "authentication failed" };
     }
-    const decoded = <{ userId: number; iat: number }>(
+    const decoded = <{ userId: string; iat: number }>(
       jwt.verify(authorization!, process.env.JWT_SECRET!)
     );
 
